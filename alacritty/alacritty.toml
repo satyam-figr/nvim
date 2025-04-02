@@ -1,0 +1,132 @@
+[window]
+opacity = 0.9
+# Spread additional padding evenly around the terminal content
+dynamic_padding = true
+# Startup Mode: Windowed, Maximized, Fullscreen
+startup_mode = "Maximized"
+# Window decorations: full, none, transparent, buttonless
+decorations = "Full"
+# Window padding (changes require restart)
+padding = { x = 10, y = 10 }
+
+# Font configuration
+[font]
+size = 14.0
+
+[font.normal]
+family = "Menlo"
+style = "Regular"
+
+[font.bold]
+family = "Menlo" 
+style = "Bold"
+
+[font.italic]
+family = "Menlo"
+style = "Italic"
+
+# If the font quality on macOS looks bad, uncomment these:
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+# Terminal colors (Catppuccin Mocha theme)
+[colors.primary]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+dim_foreground = "#CDD6F4"
+bright_foreground = "#CDD6F4"
+
+[colors.cursor]
+text = "#1E1E2E"
+cursor = "#F5E0DC"
+
+[colors.normal]
+black = "#45475A"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#BAC2DE"
+
+[colors.bright]
+black = "#585B70"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#A6ADC8"
+
+[colors.hints]
+start = { foreground = "#1E1E2E", background = "#F9E2AF" }
+end = { foreground = "#1E1E2E", background = "#A6ADC8" }
+
+[colors.search]
+matches = { foreground = "#1E1E2E", background = "#A6ADC8" }
+focused_match = { foreground = "#1E1E2E", background = "#A6E3A1" }
+
+[colors.footer_bar]
+background = "#181825"
+foreground = "#CDD6F4"
+
+[colors.selection]
+text = "#1E1E2E"
+background = "#F5E0DC"
+
+# Cursor configuration
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 750
+blink_timeout = 5
+thickness = 0.15
+unfocused_hollow = true
+
+# Terminal bell
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+color = "#CDD6F4"
+
+# Key bindings
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+action = "Paste"
+
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "CreateNewWindow"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Command"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Command"
+action = "ResetFontSize"
+
+# Scrolling
+[scrolling]
+history = 10000
+multiplier = 3
+
+# Mouse configuration
+[mouse]
+hide_when_typing = true
