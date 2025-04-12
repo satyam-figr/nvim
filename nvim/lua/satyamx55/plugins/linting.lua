@@ -27,21 +27,36 @@ return {
     -- Create an autocommand group for linting
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-    -- Trigger linting more aggressively
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
+    -- Real-time linting (as you type)
+    vim.api.nvim_create_autocmd({
+      "BufEnter",
+      "BufWritePost",
+      "TextChangedI", -- Trigger during insert mode text changes
+      "TextChanged", -- Trigger during normal mode text changes
+    }, {
       group = lint_augroup,
       callback = function()
-        lint.try_lint()
+        -- Debounce the linting to avoid performance issues
+        -- This cancels any existing delayed execution and sets a new one
+        local timer = vim.loop.new_timer()
+        if timer then
+          timer:start(
+            300,
+            0,
+            vim.schedule_wrap(function()
+              lint.try_lint()
+            end)
+          )
+        else
+          -- Fallback if timer creation fails
+          lint.try_lint()
+        end
       end,
     })
 
-    -- Set virtual text to show inline errors (you can adjust this according to preference)
+    -- Also enable diagnostic updates in insert mode
     vim.diagnostic.config({
-      virtual_text = true,
-      signs = true,
-      underline = true,
-      update_in_insert = false,
-      severity_sort = true,
+      update_in_insert = true, -- Show diagnostics even in insert mode
     })
 
     -- Keymapping to manually trigger linting
