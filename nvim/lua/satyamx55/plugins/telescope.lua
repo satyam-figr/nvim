@@ -34,6 +34,11 @@ return {
           },
         },
       },
+      extensions = {
+        file_browser = {
+          hidden = false, -- don't show hidden files
+        },
+      },
     })
 
     telescope.load_extension("fzf")
