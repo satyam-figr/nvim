@@ -1,5 +1,6 @@
 [window]
 opacity = 0.9
+blur = true
 # Spread additional padding evenly around the terminal content
 dynamic_padding = true
 # Startup Mode: Windowed, Maximized, Fullscreen
@@ -10,19 +11,19 @@ decorations = "Full"
 padding = { x = 10, y = 10 }
 
 # Font configuration
-[font]
-size = 14.0
 
-[font.normal]
-family = "Menlo"
-style = "Regular"
+
+
+[font]
+normal = { family = "Iosevka Nerd Font" }
+size = 16
 
 [font.bold]
-family = "Menlo" 
+family = "Iosevka Nerd Font" 
 style = "Bold"
 
 [font.italic]
-family = "Menlo"
+family = "Iosevka Nerd Font"
 style = "Italic"
 
 # If the font quality on macOS looks bad, uncomment these:
@@ -36,10 +37,13 @@ y = 0
 
 # Terminal colors (Catppuccin Mocha theme)
 [colors.primary]
-background = "#1E1E2E"
+
+
+background = "#000000"
 foreground = "#CDD6F4"
-dim_foreground = "#CDD6F4"
-bright_foreground = "#CDD6F4"
+
+dim_foreground = "#000000"
+bright_foreground = "#000000"
 
 [colors.cursor]
 text = "#1E1E2E"
@@ -130,3 +134,6 @@ multiplier = 3
 # Mouse configuration
 [mouse]
 hide_when_typing = true
+
+
+

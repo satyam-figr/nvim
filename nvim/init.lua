@@ -1,6 +1,3 @@
--- This is the main configuration file for Neovim.
-require('vim-options')
-require("config.lazy")
+require("satyamx55.core")
 
-
-
+require("satyamx55.lazy")
