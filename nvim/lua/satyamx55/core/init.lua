@@ -11,3 +11,8 @@ terminal.setup({
   toggle_key = "tt", -- Key to toggle terminal
   exit_key = "<C-x>", -- Optional: key to just exit terminal mode
 })
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  command = "set nopaste",
+})
