@@ -4,9 +4,12 @@ return {
   config = function()
     local transparent = false -- set to true if you would like to enable transparency
 
-    local bg = "#000D16"
-    local bg_dark = "#000D16"
-    local bg_highlight = "#0A1C2E"
+    --local bg = "#000D16"
+    local bg = "#000000"
+    --  local bg_dark = "#000D16"
+    local bg_dark = "#000000"
+    -- local bg_highlight = "#0A1C2E"
+    local bg_highlight = "#1c2e40"
     local bg_search = "#0A64AC"
     local bg_visual = "#275378"
     local fg = "#CBE0F0"

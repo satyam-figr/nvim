@@ -28,3 +28,14 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- From terminal mode: exit to normal mode
 -- vim.keymap.set("t", "tt", [[<C-\><C-n>]], { noremap = true, silent = true }) -- exit from terminal mode
 
+-- delete a word backwards
+keymap.set("n", "dw", "vb_d")
+
+-- select all
+keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- move window
+keymap.set("n", "sh", "<C-w>h")
+keymap.set("n", "sk", "<C-w>k")
+keymap.set("n", "sj", "<C-w>j")
+keymap.set("n", "sl", "<C-w>l")
