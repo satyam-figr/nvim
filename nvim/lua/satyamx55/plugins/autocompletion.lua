@@ -17,18 +17,15 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-
     local luasnip = require("luasnip")
-
     local lspkind = require("lspkind")
-
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
-
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
+      preselect = cmp.PreselectMode.Item, -- Add this to preselect the first item
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -41,7 +38,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Changed select to true to auto-select highlighted item
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
@@ -50,7 +47,6 @@ return {
         { name = "buffer", priority = 500 }, -- text within current buffer
         { name = "path", priority = 900 }, -- file system paths
       }),
-
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         format = lspkind.cmp_format({

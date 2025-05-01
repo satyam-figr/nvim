@@ -1,6 +1,6 @@
 return {
   "windwp/nvim-autopairs",
-  event = { "InsertEnter" },
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/nvim-cmp",
   },
@@ -18,26 +18,16 @@ return {
       },
     })
 
-    -- import nvim-autopairs completion functionality
-    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    -- Make sure nvim-cmp is loaded before setting up the integration
+    local cmp_ok, cmp = pcall(require, "cmp")
+    if cmp_ok then
+      -- import nvim-autopairs completion functionality
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-    -- import nvim-cmp plugin (completions plugin)
-    local cmp = require("cmp")
-
-    -- comment this later
-    cmp.setup({
-      preselect = cmp.PreselectMode.Item,
-      completion = {
-        completeopt = "menu,menuone,noinsert",
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      }),
-    })
-
-    -- till here comment this
-
-    -- make autopairs and completion work together
-    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+      -- make autopairs and completion work together
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    else
+      vim.notify("nvim-cmp not loaded, autopairs integration skipped", vim.log.levels.WARN)
+    end
   end,
 }
